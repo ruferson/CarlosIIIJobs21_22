@@ -27,13 +27,13 @@
     echo __( 'Suscríbete para recibir nuestras ofertas de trabajo', 'CarlosIIIJobsSuscribe_widget_domain' );
     echo $args['after_widget'];
     ?>
-    <form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
+    <form class="widget_form_suscribe" action="<?php echo esc_url( admin_url('admin-ajax.php') ); ?>" method="post">
         <input type="hidden" name="action" value="CarlosIIIJob_suscribe">
  
         <p>
             <label for="solo-subscribe-email"><?php _e('E-Mail:', 'subscribe-to-comments'); ?>
                 <input type="email" name="email" id="solo-subscribe-email" size="22" value="" /></label>
-            <input type="submit" name="submit" value="<?php _e('Subscribe', 'subscribe-to-comments'); ?>" />
+            <input type="submit" name="submit" id="boton_enviar" value="<?php _e('Subscribe', 'subscribe-to-comments'); ?>" />
         </p>
     </form>
 <?php

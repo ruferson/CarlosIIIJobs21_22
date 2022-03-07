@@ -28,5 +28,19 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
+    $(function() {
+
+        $('.widget_form_suscribe').on('submit', function (e) {
+            e.preventDefault();
+
+            var $form = $(this);
+            $.post($form.attr('action'), $form.serialize(), function (data) {
+                alert(data.message);
+				$('#solo-subscribe-email').val("");
+				$('#boton_enviar').attr("disabled", true);
+            }, 'json');
+        });
+
+    });
 
 })( jQuery );
