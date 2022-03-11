@@ -27,6 +27,7 @@ services:
      volumes:
        - ./src:/var/www/html
        - ./CarlosIIIJobs/CarlosIIIJobs:/var/www/html/wp-content/plugins/CarlosIIIJobs
+       - ./CarlosIIICommit/CarlosIIICommit:/var/www/html/wp-content/plugins/CarlosIIICommit
 volumes:
     wordpress:
     db_data: {}
