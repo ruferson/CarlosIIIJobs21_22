@@ -7,8 +7,15 @@ class CarlosIIICommit_shortcode
     {
         function CarlosIIICommit_shortcode($atts, $content = null)
         {
+
+            $numeroCommit = get_option('CarlosIIICommit_options_nCommits');
+
+            if (!($numeroCommit)) {
+                $numeroCommit = 5;
+            }
+
             $atts = shortcode_atts( array(
-                'n_commits' => 2,
+                'n_commits' => $numeroCommit,
             ), $atts );
 
             $query = new WP_Query( array( 'post_type' => 'Commit' , 'posts_per_page' => $atts['n_commits']) );

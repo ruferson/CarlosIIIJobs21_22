@@ -55,12 +55,7 @@ function deactivate_CarlosIIICommit() {
 	CarlosIIICommit_Deactivator::deactivate();
 }
 
-function Commit_options_callback() {
-	if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-	}
-	require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/Commit-options-form.php';
-}
+
 
 register_activation_hook( __FILE__, 'activate_CarlosIIICommit' );
 register_deactivation_hook( __FILE__, 'deactivate_CarlosIIICommit' );

@@ -1,7 +1,7 @@
 <table>
     <tr valign="top">
         <th class="metabox_label_column">
-            <label for="url">URL del commit</label>
+            <label for="url">url_logotipo del commit</label>
         </th>
         <td>
             <input type="text" id="url" name="url" value="<?php echo @get_post_meta($post->ID, 'url', true); ?>" />

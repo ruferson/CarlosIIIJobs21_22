@@ -101,19 +101,23 @@ class CarlosIIICommit_Admin {
 	}
 
     public function CarlosIIICommit_inscribe() {
-        $response = array(
-            'error' => false,
-        );
-		$nombreInscrito = htmlspecialchars($_POST["nombre"]);
-		$emailInscrito = htmlspecialchars($_POST["email"]);
-        $urlInscrito = htmlspecialchars($_POST["url"]);
-        if(!$this->getInscrito($emailInscrito)) {
-            $this->addInscrito($nombreInscrito, $emailInscrito, $urlInscrito);            $response['message'] = __("Solicitud registrada correctamente");
-        } else {
-            $response['message'] = __("Usted ya solicitó inscribirse");
-        }
 
-        exit(json_encode($response));
+		$inscritos = get_option('JuezLTICommit_inscritos');
+
+		if(!in_array(htmlspecialchars($_POST["nombre"]), $inscritos)) {
+
+			$inscritos[] = htmlspecialchars($_POST["nombre"]);
+			update_option('JuezLTICommit_inscritos', $inscritos);
+			$nombreInscrito = htmlspecialchars($_POST["nombre"]);
+			$emailInscrito = htmlspecialchars($_POST["email"]);
+			$urlInscrito = htmlspecialchars($_POST["url_logotipo"]);
+			if(!$this->getInscrito($emailInscrito)) {
+				$this->addInscrito($nombreInscrito, $emailInscrito, $urlInscrito);
+			} 
+
+		}
+
+        wp_safe_redirect(site_url() );
     }
 
     public function getInscrito($emailInscrito) {

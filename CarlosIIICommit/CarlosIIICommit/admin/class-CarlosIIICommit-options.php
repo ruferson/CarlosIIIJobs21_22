@@ -14,6 +14,13 @@ class CarlosIIICommit_Options {
 	    add_action( 'load-' . $hookname, array($this, 'CarlosIIICommit_save_options') );
 	}
 
+	function Commit_options_callback() {
+		if ( !current_user_can( 'manage_options' ) )  {
+			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+		}
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/Commit-options-form.php';
+	}
+
     public function CarlosIIICommitRegistraOpciones() {
 		$opciones = array(
 			array(
